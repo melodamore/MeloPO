@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Added to stack elements vertically */
             background-color: #1a1a1a;
             color: #fff;
             font-family: 'Arial', sans-serif;
@@ -27,7 +28,10 @@
             letter-spacing: 5px;
             animation: loading-animation 1s infinite alternate;
         }
-
+        .sub-text {
+            font-size: 1.5rem; /* Adjust font size for the subtext */
+            margin-top: 10px; /* Spacing between lines */
+        }
         @keyframes loading-animation {
             0% {
                 opacity: 0.2;
@@ -40,8 +44,10 @@
         }
     </style>
 </head>
-<body>
-    <div class="loading-container">MELODAMORE</div>
+<bod
+    <div class="loading-container">MeloPO</div>
+    <div class="sub-text">Trade With Ease!</div>
+    <div class="sub-text">Brought to you by 👉 MELODAMORE</div>
 
     <script>
         // Function to redirect to Pocket Options after 3 seconds
