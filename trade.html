@@ -37,6 +37,12 @@
             margin-top: 10px; /* Spacing between lines */
             text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
         }
+        .flash-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            animation: flash-animation 1s infinite alternate;
+            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
+        }
         @keyframes loading-animation {
             0% {
                 opacity: 0.2;
@@ -47,10 +53,20 @@
                 transform: scale(1.2);
             }
         }
+        @keyframes flash-animation {
+            0% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-   
+    <div class="loading-container">Loading...</div>
+    <div class="sub-text">Please wait</div>
+    <div class="flash-text">Pocket Options loading...</div>
 
     <script>
         // Function to redirect to Pocket Options after 3 seconds
