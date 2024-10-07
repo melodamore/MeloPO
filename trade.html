@@ -19,6 +19,9 @@
             background-color: #1a1a1a;
             color: #fff;
             font-family: 'Arial', sans-serif;
+            background-image: url('https://i.ibb.co/G57p993/images-15.jpg'); /* Set the background image */
+            background-size: cover; /* Make the background image cover the entire area */
+            background-position: center; /* Center the background image */
         }
         .loading-container {
             display: flex;
@@ -27,10 +30,12 @@
             font-size: 2rem;
             letter-spacing: 5px;
             animation: loading-animation 1s infinite alternate;
+            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
         }
         .sub-text {
             font-size: 1.5rem; /* Adjust font size for the subtext */
             margin-top: 10px; /* Spacing between lines */
+            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
         }
         @keyframes loading-animation {
             0% {
