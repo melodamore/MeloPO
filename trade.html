@@ -15,43 +15,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Added to stack elements vertically */
             background-color: #1a1a1a;
-            color: black;
             font-family: 'Arial', sans-serif;
             background-image: url('https://i.ibb.co/Yys8jGk/20241007-175531.png'); /* Set the background image */
             background-size: cover; /* Make the background image cover the entire area */
             background-position: center; /* Center the background image */
-        }
-        .loading-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            letter-spacing: 5px;
-            animation: loading-animation 1s infinite alternate;
-            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
-        }
-        .sub-text {
-            font-size: 1.5rem; /* Adjust font size for the subtext */
-            margin-top: 10px; /* Spacing between lines */
-            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Prevent scrolling */
         }
         .flash-text {
-            margin-top: 20px;
-            font-size: 1.2rem;
+            position: absolute;
+            bottom: 20px; /* Place text at the bottom */
+            font-size: 1.5rem;
+            color: white;
             animation: flash-animation 1s infinite alternate;
             text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
-        }
-        @keyframes loading-animation {
-            0% {
-                opacity: 0.2;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
         }
         @keyframes flash-animation {
             0% {
@@ -64,9 +42,7 @@
     </style>
 </head>
 <body>
-    <div class="loading-container">Loading...</div>
-    <div class="sub-text">Please wait</div>
-    <div class="flash-text">Pocket Options loading...</div>
+    <div class="flash-text">Pocket Options is Loading...</div>
 
     <script>
         // Function to redirect to Pocket Options after 3 seconds
