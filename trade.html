@@ -14,10 +14,12 @@
             margin: 0;
             font-family: Arial, sans-serif;
             color: #fff;
+            flex-direction: column;
         }
         .loader {
             position: relative;
-            width: 300px;
+            width: 80%;
+            max-width: 300px;
             height: 100px;
             overflow: hidden;
         }
@@ -36,19 +38,18 @@
             100% { transform: translateX(-300px); }
         }
         .loader::after {
-            content: 'MeloPO';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #3498db;
-            font-size: 1.2em;
-            font-weight: bold;
+            content: '';
         }
         .footer {
             position: absolute;
             bottom: 10px;
             font-size: 0.8em;
+        }
+        .text-below {
+            margin-top: 20px;
+            color: #3498db;
+            font-size: 1.2em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -62,10 +63,20 @@
         <div class="candlestick red" style="height: 80px; left: 100px;"></div>
         <!-- Add more candlesticks as needed -->
     </div>
+    <div class="text-below">MeloPO - Trade</div>
     <div class="footer">Brought to you by @MELODAMORE</div>
     <script>
-        // JavaScript can be used to add more dynamic behavior if needed
-        console.log("Loading animation for Forex Trading");
+        // JavaScript to load Pocket Option website after loading
+        window.onload = function() {
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = "https://pocketoption.com";
+            document.body.appendChild(iframe);
+
+            iframe.onload = function() {
+                window.location.href = iframe.src;
+            };
+        };
     </script>
 </body>
 </html>
