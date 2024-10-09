@@ -1,5 +1,3 @@
-add "Brought to you by @MELODAMORE" and make the loading animation more of green and red candle sticks passing infinity throu the middle of the screen
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +13,30 @@ add "Brought to you by @MELODAMORE" and make the loading animation more of green
             background-color: #1a1a1a;
             margin: 0;
             font-family: Arial, sans-serif;
+            color: #fff;
         }
         .loader {
             position: relative;
             width: 100px;
             height: 100px;
-            border: 10px solid #f3f3f3;
-            border-top: 10px solid #3498db;
-            border-radius: 50%;
-            animation: spin 2s linear infinite;
+        }
+        .candlestick {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background-color: green;
+            animation: move 2s linear infinite;
+        }
+        .candlestick.red {
+            background-color: red;
+        }
+        .candlestick:nth-child(2) {
+            animation-delay: 1s;
+        }
+        @keyframes move {
+            0% { transform: translateX(-50px) translateY(0); }
+            50% { transform: translateX(50px) translateY(0); }
+            100% { transform: translateX(-50px) translateY(0); }
         }
         .loader::after {
             content: 'MeloPO';
@@ -35,14 +48,19 @@ add "Brought to you by @MELODAMORE" and make the loading animation more of green
             font-size: 1.2em;
             font-weight: bold;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
-    <div class="loader"></div>
+    <div class="loader">
+        <div class="candlestick"></div>
+        <div class="candlestick red"></div>
+    </div>
+    <div class="footer">Brought to you by @MELODAMORE</div>
     <script>
         // JavaScript can be used to add more dynamic behavior if needed
         console.log("Loading animation for Forex Trading");
