@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Animation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Telegram Mini App Auto Login</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            height: 100vh;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1a1a1a;
-            font-family: 'Arial', sans-serif;
-            background-image: url('https://i.ibb.co/Yys8jGk/20241007-175531.png'); /* Set the background image */
-            background-size: cover; /* Make the background image cover the entire area */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Prevent scrolling */
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
         }
-        .flash-text {
-            position: absolute;
-            bottom: 20px; /* Place text at the bottom */
-            font-size: 1.5rem;
-            color: white;
-            animation: flash-animation 1s infinite alternate;
-            text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white; /* White outline effect */
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-        @keyframes flash-animation {
-            0% {
-                opacity: 0.2;
-            }
-            100% {
-                opacity: 1;
-            }
+        .welcome-message {
+            font-size: 20px;
+            color: green;
         }
     </style>
 </head>
 <body>
-    <div class="flash-text">Pocket Options is Loading...</div>
+    <div class="container">
+        <h2>Welcome to the Mini App</h2>
+        <div class="welcome-message" id="welcome-message">
+            <!-- User data will be displayed here -->
+        </div>
+    </div>
 
+    <!-- Telegram Web App Integration -->
     <script>
-        // Function to redirect to Pocket Options after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'https://pocketoption.com';
-        }, 3000);
+        // Initialize the Telegram Web App
+        window.Telegram.WebApp.init();
+
+        // Get the user information from Telegram
+        const user = window.Telegram.WebApp.initDataUnsafe.user;
+
+        // Display the user's first name inside the mini-app
+        if (user) {
+            const welcomeMessage = document.getElementById('welcome-message');
+            welcomeMessage.textContent = `Hello, ${user.first_name}!`;
+        } else {
+            const welcomeMessage = document.getElementById('welcome-message');
+            welcomeMessage.textContent = "Unable to retrieve user information.";
+        }
     </script>
 </body>
 </html>
