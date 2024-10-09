@@ -26,13 +26,21 @@
             font-size: 20px;
             color: green;
         }
+        .user-details {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Welcome to the Mini App</h2>
         <div class="welcome-message" id="welcome-message">
-            <!-- User data will be displayed here -->
+            <!-- User-specific welcome message will appear here -->
+        </div>
+        <div class="user-details" id="user-details">
+            <!-- Additional user information will appear here -->
         </div>
     </div>
 
@@ -44,13 +52,24 @@
         // Get the user information from Telegram
         const user = window.Telegram.WebApp.initDataUnsafe.user;
 
-        // Display the user's first name inside the mini-app
+        // Get references to the HTML elements
+        const welcomeMessage = document.getElementById('welcome-message');
+        const userDetails = document.getElementById('user-details');
+
+        // Check if we have user information
         if (user) {
-            const welcomeMessage = document.getElementById('welcome-message');
-            welcomeMessage.textContent = `Hello, ${user.first_name}!`;
+            // Display the personalized welcome message
+            welcomeMessage.textContent = `Hello, ${user.first_name}! Welcome to the Mini App.`;
+
+            // Display additional user information
+            userDetails.innerHTML = `
+                <p><strong>Username:</strong> ${user.username ? user.username : 'Not available'}</p>
+                <p><strong>Full Name:</strong> ${user.first_name} ${user.last_name ? user.last_name : ''}</p>
+            `;
         } else {
-            const welcomeMessage = document.getElementById('welcome-message');
+            // Handle cases where user information is not available
             welcomeMessage.textContent = "Unable to retrieve user information.";
+            userDetails.textContent = "";
         }
     </script>
 </body>
