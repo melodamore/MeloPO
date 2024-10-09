@@ -17,26 +17,23 @@
         }
         .loader {
             position: relative;
-            width: 100px;
+            width: 300px;
             height: 100px;
+            overflow: hidden;
         }
         .candlestick {
             position: absolute;
+            bottom: 0;
             width: 10px;
-            height: 40px;
             background-color: green;
-            animation: move 2s linear infinite;
+            animation: move 5s linear infinite;
         }
         .candlestick.red {
             background-color: red;
         }
-        .candlestick:nth-child(2) {
-            animation-delay: 1s;
-        }
         @keyframes move {
-            0% { transform: translateX(-50px) translateY(0); }
-            50% { transform: translateX(50px) translateY(0); }
-            100% { transform: translateX(-50px) translateY(0); }
+            0% { transform: translateX(300px); }
+            100% { transform: translateX(-300px); }
         }
         .loader::after {
             content: 'MeloPO';
@@ -57,8 +54,13 @@
 </head>
 <body>
     <div class="loader">
-        <div class="candlestick"></div>
-        <div class="candlestick red"></div>
+        <div class="candlestick" style="height: 40px; left: 0;"></div>
+        <div class="candlestick red" style="height: 60px; left: 20px;"></div>
+        <div class="candlestick" style="height: 50px; left: 40px;"></div>
+        <div class="candlestick red" style="height: 70px; left: 60px;"></div>
+        <div class="candlestick" style="height: 30px; left: 80px;"></div>
+        <div class="candlestick red" style="height: 80px; left: 100px;"></div>
+        <!-- Add more candlesticks as needed -->
     </div>
     <div class="footer">Brought to you by @MELODAMORE</div>
     <script>
