@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Greeting Bot</title>
+    <title>Forex Trading Loading Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .loader {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #3498db;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+        .loader::after {
+            content: 'FOREX';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #3498db;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Telegram Greeting Bot</h1>
-    <p>This bot will greet you by your name!</p>
+    <div class="loader"></div>
+    <script>
+        // JavaScript can be used to add more dynamic behavior if needed
+        console.log("Loading animation for Forex Trading");
+    </script>
 </body>
 </html>
