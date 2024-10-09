@@ -3,74 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Telegram Mini App Auto Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f7f7f7;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .welcome-message {
-            font-size: 20px;
-            color: green;
-        }
-        .user-details {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #333;
-        }
-    </style>
+    <title>Telegram Greeting Bot</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Welcome to the Mini App</h2>
-        <div class="welcome-message" id="welcome-message">
-            <!-- User-specific welcome message will appear here -->
-        </div>
-        <div class="user-details" id="user-details">
-            <!-- Additional user information will appear here -->
-        </div>
-    </div>
-
-    <!-- Telegram Web App Integration -->
+    <h1 id="greeting">Hello!</h1>
     <script>
-        // Initialize the Telegram Web App
-        window.Telegram.WebApp.init();
-
-        // Get the user information from Telegram
-        const user = window.Telegram.WebApp.initDataUnsafe.user;
-
-        // Get references to the HTML elements
-        const welcomeMessage = document.getElementById('welcome-message');
-        const userDetails = document.getElementById('user-details');
-
-        // Check if we have user information
-        if (user) {
-            // Display the personalized welcome message
-            welcomeMessage.textContent = `Hello, ${user.first_name}! Welcome to the Mini App.`;
-
-            // Display additional user information
-            userDetails.innerHTML = `
-                <p><strong>Username:</strong> ${user.username ? user.username : 'Not available'}</p>
-                <p><strong>Full Name:</strong> ${user.first_name} ${user.last_name ? user.last_name : ''}</p>
-            `;
-        } else {
-            // Handle cases where user information is not available
-            welcomeMessage.textContent = "Unable to retrieve user information.";
-            userDetails.textContent = "";
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split("&").forEach(pair => {
+                const [key, value] = pair.split("=");
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
         }
+
+        const params = getQueryParams();
+        const name = params['name'] || 'Guest';
+        document.getElementById('greeting').innerText = `Hello, ${name}!`;
     </script>
 </body>
 </html>
